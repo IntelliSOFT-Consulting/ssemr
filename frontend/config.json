@@ -25,10 +25,57 @@
   "@openmrs/esm-patient-chart-app": {
     "logo": {
       "src": "/openmrs/spa/primary-navigation.png"
+    },
+    "extensionSlots": {
+      "patient-chart-allergies-dashboard-slot": {
+        "add": [
+          "obs-by-encounter-widget#hiv",
+          "obs-by-encounter-widget#arvregimen"
+        ],
+        "configure": {
+          "obs-by-encounter-widget#arvregimen": {
+            "title": "ARV Regimen",
+            "resultName": "Regimen",
+            "data": [
+              {
+                "concept": "23322fd6-3dbb-410e-8bee-6210dfcd5f71",
+                "label": "ARV Regimen",
+                "color": "red"
+              }
+            ],
+            "table": {
+              "pageSize": 5
+            }
+          },
+          "obs-by-encounter-widget#hiv": {
+            "title": "HIV Widget",
+            "resultName": "HIV",
+            "data": [
+              {
+                "concept": "01c3ce55-b7eb-45f5-93d5-bace353e3cfd",
+                "label": "Viral load",
+                "color": "red"
+              }
+            ],
+            "table": {
+              "pageSize": 5
+            }
+          }
+        }
+      }
     }
   },
-  "@openmrs/esm-patient-registration-app": {
+  "@ssemr/esm-patient-registration-app": {
     "sectionDefinitions": [
+      {
+        "id": "contact",
+        "name": "Contact Details",
+        "fields": [
+          "address",
+          "phone",
+          "altPhone"
+        ]
+      },
       {
         "id": "nextOfKin",
         "name": "Next of Kin",
@@ -136,6 +183,19 @@
         "useAddressHierarchy": {
           "searchAddressByLevel": true
         }
+      }
+    }
+  },
+  "@openmrs/esm-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "remove": [
+          "home-appointments",
+          "active-visits-widget"
+        ]
+      },
+      "homepage-dashboard-slot": {
+        "remove": ["home-appointments", "active-visits-widget"]
       }
     }
   }
