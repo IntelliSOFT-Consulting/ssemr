@@ -64,7 +64,7 @@
               "required": false,
               "id": "medicalHistory",
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "select",
                 "concept": "9af72d4e-8f50-4545-b154-7dd12fea2ea4",
                 "conceptMappings": [],
                 "answers": [
@@ -125,10 +125,6 @@
                     "label": "Oral Ulcer"
                   },
                   {
-                    "concept": "c5120716-e297-40f6-9eb5-ef432cc791c0",
-                    "label": "Other Past Medical History(Specify)"
-                  },
-                  {
                     "concept": "cc23bab5-d6eb-4e16-948b-25a366080dba",
                     "label": "Papular pruritic eruption"
                   },
@@ -167,10 +163,30 @@
                   {
                     "concept": "901d53c5-fd75-40c7-a39b-b5e25b6255fd",
                     "label": "Unexplained chronic diarrhea (>1 month)"
+                  },
+                  {
+                    "concept": "c5120716-e297-40f6-9eb5-ef432cc791c0",
+                    "label": "Other Past Medical History"
                   }
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "Specify Other Past Medical History",
+              "type": "obs",
+              "required": false,
+              "id": "otherPastMedicalHistory",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f16c6a11-453f-44a2-a7a5-77aeaa93e67d",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " medicalHistory !== 'c5120716-e297-40f6-9eb5-ef432cc791c0'"
+              }
             }
           ]
         }
@@ -189,7 +205,7 @@
               "required": false,
               "id": "currentSymptoms",
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "select",
                 "concept": "aa25ca53-21b8-4e2f-b44b-61c2c20d4dee",
                 "conceptMappings": [],
                 "answers": [
@@ -255,7 +271,7 @@
                   },
                   {
                     "concept": "203d9e67-4e15-11e4-8a57-0800271c1b75",
-                    "label": "Nausea w/ vomiting"
+                    "label": "Nausea and vomiting"
                   },
                   {
                     "concept": "64122e23-ca4a-4603-839b-af4197aef9a4",
@@ -283,7 +299,7 @@
                   },
                   {
                     "concept": "fc4a6283-70f2-49fd-82fb-d8c8a6bbd5ba",
-                    "label": "Rheumatoid Arthritis, Joint Pain or Joint Swelling Today"
+                    "label": "Joint pain and/or swelling"
                   },
                   {
                     "concept": "0df5db1f-a1fe-4dbb-82aa-c3beeb84ad31",
@@ -308,6 +324,91 @@
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "Duration for Current Cough",
+              "type": "obs",
+              "required": false,
+              "id": "durationForCurrentCough",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8300a2dd-ed91-44d7-9b49-4c83d8b54328",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " currentSymptoms !== '147b8be8-d657-4e46-8970-6f9983b27722'"
+              }
+            },
+            {
+              "label": "Duration for Fever",
+              "type": "obs",
+              "required": false,
+              "id": "durationForFever",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "19fa91bb-75f2-4aa2-8d7c-532d358bfe1a",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " currentSymptoms !== '1f0f8ec6-4e15-11e4-8a57-0800271c1b75'"
+              }
+            },
+            {
+              "label": "Duration for Diarrhoea",
+              "type": "obs",
+              "required": false,
+              "id": "durationForDiarrhoea",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "544c5cf0-f045-4e7c-9c7f-2d351634c55b",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " currentSymptoms !== '8166b90f-671c-4787-a3a4-d4ea8fd74f43'"
+              }
+            },
+            {
+              "label": "Duration for Weight Loss",
+              "type": "obs",
+              "required": false,
+              "id": "durationForWeightLoss",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e5c5bd51-8025-419c-a8c0-3fbb9aaa737d",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " currentSymptoms !== '1fc47a4b-e35d-4f89-953e-52c4c6a69eb5'"
+              }
+            },
+            {
+              "label": "Percentage of Weight Loss",
+              "type": "obs",
+              "required": false,
+              "id": "percentageOfWeightLoss",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "2e534b2d-1ee4-4811-9f7b-2cdf963b8b18",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " currentSymptoms !== '1fc47a4b-e35d-4f89-953e-52c4c6a69eb5'"
+              }
             }
           ]
         },
@@ -409,7 +510,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(bpSystolic) || bpSystolic < 0",
-                  "message": "Boold Pressure Systolic should not be less than 0"
+                  "message": "Systolic Blood Pressure should not be less than 0"
                 }
               ]
             },
@@ -429,7 +530,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(bpDiastolic) || bpDiastolic < 0",
-                  "message": "Boold Pressure Diastolic should not be less than 0"
+                  "message": "Diastolic Blood Pressure should not be less than 0"
                 }
               ]
             },
@@ -449,7 +550,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(rr) || rr < 0",
-                  "message": "RR should not be less than 0"
+                  "message": "Respiratory Rate should not be less than 0"
                 }
               ]
             },
@@ -534,26 +635,6 @@
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(bmi) || bmi < 0",
                   "message": "BMI should not be less than 0"
-                }
-              ]
-            },
-            {
-              "label": "MUAC",
-              "type": "obs",
-              "required": false,
-              "id": "muac",
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "min": 0,
-                "conceptMappings": [],
-                "answers": []
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "muac < 0",
-                  "message": "MUAC should not be less than 0"
                 }
               ]
             }
@@ -894,14 +975,228 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "CD4 (cells/mm3)",
+              "label": "CD4 count (cells/mm3)",
               "type": "obs",
               "required": false,
-              "id": "cd4",
+              "id": "cd4Count",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "809dd0f5-ce54-441c-b835-a2a8b06a6140",
                 "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 5"
+              }
+            },
+            {
+              "label": "CD4 percentage",
+              "type": "obs",
+              "required": false,
+              "id": "cd4Percentage",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "809dd0f5-ce54-441c-b835-a2a8b06a6140",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age > 5"
+              }
+            },
+            {
+              "label": "CBC",
+              "type": "obs",
+              "required": false,
+              "id": "cbc",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "86ad8bcb-3a77-4560-8d38-2af869f1f0a2",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
+                    "label": "HEI"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Is the Client Pregnant?",
+              "type": "obs",
+              "required": false,
+              "id": "clientPregnant",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0f6427f8-dce2-452f-82b0-cd02aae92ec3",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "true",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "fasle",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex === 'M' || age < 10"
+              }
+            },
+            {
+              "label": "Pregnancy Test",
+              "type": "obs",
+              "required": false,
+              "id": "pregnancyTest",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "340aeec6-a9cb-42d4-82bc-1ca888d8d2e8",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
+                    "label": "HEI"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientPregnant !== 'true'"
+              }
+            },
+            {
+              "label": "MUAC",
+              "type": "obs",
+              "required": false,
+              "id": "muac",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9f97c629-b1a0-42dc-bb2f-9227aad97d96",
+                "min": 0,
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "muac < 0",
+                  "message": "MUAC should not be less than 0"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "clientPregnant !== 'true'"
+              }
+            },
+            {
+              "label": "HBsAg",
+              "type": "obs",
+              "required": false,
+              "id": "HBsAg",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a86bf807-1f1d-4b31-ba72-b7b5b55785e7",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
+                    "label": "HEI"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "HCV Antibody",
+              "type": "obs",
+              "required": false,
+              "id": "hcv",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b16f4039-e93f-47a9-a0ec-114b98003518",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
+                    "label": "HEI"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Sputum AFB (if needed)",
+              "type": "obs",
+              "required": false,
+              "id": "sputumAFB",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "6b3c7cc1-4f61-4a6c-ae7f-ef9f338281a4",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
+                    "label": "HEI"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Other clinical findings",
+              "type": "obs",
+              "required": false,
+              "id": "otherClinicalFindings",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "91ef252c-7ecf-4272-8197-3bada6cdb65b",
                 "conceptMappings": [],
                 "answers": []
               },
@@ -918,6 +1213,36 @@
           "label": "WHO Clinical Staging",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "WHO clinical stage",
+              "type": "obs",
+              "required": false,
+              "id": "whoClinicalStage",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "be15bea2-2bf4-47bd-8ed3-81118795807a",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "87045f3e-ae61-4e53-8d8f-d14e92f06d0d",
+                    "label": "Clinical stage 1 "
+                  },
+                  {
+                    "concept": "e7112b84-4321-41a9-8c04-c96c427dd7b6",
+                    "label": "Clinical stage 2"
+                  },
+                  {
+                    "concept": "4ca4d221-cb9d-4fcb-9c4f-ebc89eb0c7c3",
+                    "label": "Clinical stage 3"
+                  },
+                  {
+                    "concept": "489ff20e-5f04-4ca2-a46c-a86acd29567b",
+                    "label": "Clinical stage 4"
+                  }
+                ]
+              },
+              "validators": []
+            },
             {
               "label": "Clinical stage 1",
               "type": "obs",
@@ -938,7 +1263,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "whoClinicalStage !== '87045f3e-ae61-4e53-8d8f-d14e92f06d0d'"
+              }
             },
             {
               "label": "Clinical stage 2",
@@ -984,7 +1312,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "whoClinicalStage !== 'e7112b84-4321-41a9-8c04-c96c427dd7b6'"
+              }
             },
             {
               "label": "Clinical stage 3",
@@ -1034,7 +1365,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "whoClinicalStage !== '4ca4d221-cb9d-4fcb-9c4f-ebc89eb0c7c3'"
+              }
             },
             {
               "label": "Clinical stage 4",
@@ -1132,7 +1466,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "whoClinicalStage !== '489ff20e-5f04-4ca2-a46c-a86acd29567b'"
+              }
             }
           ]
         }
