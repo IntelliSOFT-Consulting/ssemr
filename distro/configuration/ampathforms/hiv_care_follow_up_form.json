@@ -2,7 +2,7 @@
   "name": "Follow Up",
   "pages": [
     {
-      "label": "Follow up",
+      "label": "Client Details",
       "sections": [
         {
           "label": "Client Details",
@@ -50,7 +50,13 @@
                 "min": 0,
                 "isSimpleValue": true
               },
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(durationDaysStartingArt) || durationDaysStartingArt < 0",
+                  "message": "Duration in months since first starting ART cannot be less than 0"
+                }
+              ]
             },
             {
               "label": "Duration in months since starting current regimen",
@@ -62,60 +68,91 @@
                 "min": 0,
                 "isSimpleValue": true
               },
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(durationDaysStartingRegimen) || durationDaysStartingRegimen < 0",
+                  "message": "Duration in months since starting current regimen cannot be less than 0"
+                }
+              ]
             },
             {
               "label": "Weight",
               "id": "weight",
               "required": true,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ca055d08-6cd7-4331-83bb-1d27dc5aa61f')) ? undefined : HD.getObject('prevEnc').getValue('ca055d08-6cd7-4331-83bb-1d27dc5aa61f')",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? undefined : HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
-                "answers": [],
-                "concept": "ca055d08-6cd7-4331-83bb-1d27dc5aa61f",
+                "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "rendering": "numeric",
-                "min": 0
+                "min": 2.5,
+                "max": 150
               },
               "type": "obs",
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(weight) || weight < 2.5 || weight > 150",
+                  "message": "Weight cannot be less than 2.5kg and should not exceed 150kg"
+                }
+              ]
             },
             {
               "label": "Height(cm)",
               "id": "height",
               "required": true,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('4940b0bb-e1b0-44b9-803d-9720ee5743d8')) ? undefined : HD.getObject('prevEnc').getValue('4940b0bb-e1b0-44b9-803d-9720ee5743d8')",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? undefined : HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
                 "answers": [],
-                "concept": "4940b0bb-e1b0-44b9-803d-9720ee5743d8",
+                "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "rendering": "numeric",
                 "min": 2.5
               },
               "type": "obs",
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(height) || height < 2.5",
+                  "message": "Height should not be less than 2.5"
+                }
+              ]
             },
             {
               "label": "BMI for adult and children above 5 Years",
               "type": "obs",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "c367d9ee-3f10-11e4-adec-0800271c1b75",
+                "concept": "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "max": "100",
                 "min": "0",
                 "calculate": {
                   "calculateExpression": "calcBMI(height,weight)"
                 }
               },
-              "id": "bMi"
+              "id": "bMi",
+              "hide": {
+                "hideWhenExpression": "age < 5"
+              }
             },
             {
               "label": "MUAC for children and pregnant mothers",
               "type": "obs",
+              "id": "muac",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "90f53912-95d5-4b5c-a9eb-81f3f937225e",
                 "max": "250",
                 "min": "0"
               },
-              "id": "muac"
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "muac < 0 || muac > 250",
+                  "message": "MUAC should not be less than 0 or higher that 250"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "sex === 'M'"
+              }
             },
             {
               "label": "Current on FP",
@@ -138,7 +175,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M'"
+                "hideWhenExpression": "sex === 'M' || age < 15"
               },
               "validators": []
             },
@@ -153,56 +190,20 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "label": "C-Condoms",
+                    "label": "Condoms",
                     "concept": "1fe0597e-470d-49bd-9d82-9c7b7342dab0"
                   },
                   {
-                    "label": "I-Injectable",
-                    "concept": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    "label": "Implant",
+                    "concept": "66a6bacc-8ac0-4c2c-b44a-d62ca9a3e89b"
                   },
                   {
-                    "label": "ECP-Emergency contraceptive pills",
-                    "concept": "160570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    "label": "IUD",
+                    "concept": "f49566c2-213e-4529-894b-e5e56d270841"
                   },
                   {
-                    "label": "ECP-Emergency contraceptive pills",
-                    "concept": "160570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "ECP-Emergency contraceptive pills",
-                    "concept": "160570AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "OC-Oral contraceptive pills",
-                    "concept": "780AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "IUD-Intrauterine device",
-                    "concept": "136452AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "LAM-Lactational Amenorrhea Method",
-                    "concept": "136163AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "D-Diaphragm/Cervical cap",
-                    "concept": "5278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "FA-Fertility awareness method",
-                    "concept": "43e4fec7-244d-45c9-bda2-1e8145999a20"
-                  },
-                  {
-                    "label": "TL-Tubal Ligation",
-                    "concept": "1472AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "V-Vasectomy (Partner's)",
-                    "concept": "1489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "UND-Undecided",
-                    "concept": "162332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    "label": "Depo",
+                    "concept": "ea6ad667-d1d8-409d-abbb-0ddbcb46bee1"
                   }
                 ]
               },
@@ -232,7 +233,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M'"
+                "hideWhenExpression": "sex === 'M' || age < 15"
               },
               "validators": []
             },
@@ -246,7 +247,7 @@
                 "concept": "12118225-edad-45e2-9313-a5bca2cb4995"
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M' || pregStatus !== 'true'"
+                "hideWhenExpression": "sex === 'M' || age < 15 || pregStatus !== 'true'"
               },
               "validators": [
                 {
@@ -276,32 +277,21 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M'"
+                "hideWhenExpression": "sex === 'M' || age < 15"
               },
               "validators": []
-            },
-            {
-              "label": "Is the client on TB treatment",
-              "type": "obs",
-              "required": true,
-              "id": "clientTB",
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "58ab89cd-6674-480b-95a0-5b761b0275cb",
-                "conceptMappings": [],
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "true"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "false"
-                  }
-                ]
-              },
-              "validators": []
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "TB Screening",
+      "sections": [
+        {
+          "label": "TB Screening",
+          "isExpanded": "true",
+          "questions": [
             {
               "label": "Date started on TB",
               "type": "obs",
@@ -310,9 +300,6 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "ce828c13-dea2-43b7-85b9-975c5613b2db"
-              },
-              "hide": {
-                "hideWhenExpression": "clientTB !== 'true'"
               },
               "validators": [
                 {
@@ -350,9 +337,19 @@
                     "label": "ND - TB Screening not done"
                   }
                 ]
+              }
+            },
+            {
+              "label": "Date started on TB Rx",
+              "type": "obs",
+              "id": "dateStartedOnTBRx",
+              "questionOptions": {
+                "concept": "96d2a67c-b990-4b1c-9f04-33dc63c74cd1",
+                "rendering": "date",
+                "answers": []
               },
               "hide": {
-                "hideWhenExpression": "clientTB !== 'true'"
+                "hideWhenExpression": "TBStatus !== '19b61c26-6533-4682-bd54-d45ad218e8f5'"
               }
             },
             {
@@ -372,9 +369,6 @@
                     "label": "No"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "clientTB !== 'true'"
               }
             },
             {
@@ -394,9 +388,6 @@
                     "label": "No"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "clientTB !== 'true'"
               }
             },
             {
@@ -416,9 +407,6 @@
                     "label": "No"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "age < 15 || clientTB !== 'true'"
               }
             },
             {
@@ -441,7 +429,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age >= 15 || clientTB !== 'true'"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -463,7 +451,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age < 15 || clientTB !== 'true'"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -485,7 +473,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 14 || clientTB !== 'true'"
+                "hideWhenExpression": "age > 14"
               }
             },
             {
@@ -642,6 +630,31 @@
               }
             },
             {
+              "label": "FNA, Culture, Ultrasound Done?",
+              "type": "obs",
+              "required": true,
+              "id": "fnaCultureUltrasound",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ad8ecb63-6b5d-49b2-9a9d-e16d7a0efc40",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "true"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "false"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfTest !=='ad8ecb63-6b5d-49b2-9a9d-e16d7a0efc40'"
+              }
+            },
+            {
               "label": "TB Unit Number",
               "type": "obs",
               "required": false,
@@ -651,11 +664,19 @@
                 "rendering": "text",
                 "concept": "6cc3d304-26b5-43e1-951a-8a94a30841da"
               },
-              "hide": {
-                "hideWhenExpression": "clientTB !== 'true'",
-                "validators": []
-              }
-            },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow Up",
+      "sections": [
+        {
+          "label": "Follow Up Continuation",
+          "isExpanded": "true",
+          "questions": [
             {
               "label": "Is the client on CTX",
               "type": "obs",
@@ -962,9 +983,8 @@
               "label": " ART regimen given",
               "id": "ArtRegimen",
               "required": true,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('d1f02073-460c-4cd4-89b0-c16766e06334')) ? undefined : HD.getObject('prevEnc').getValue('d1f02073-460c-4cd4-89b0-c16766e06334')",
               "questionOptions": {
-                "concept": "23322fd6-3dbb-410e-8bee-6210dfcd5f71",
+                "concept": "18c93362-69c7-4343-bb3e-7e6fdae66307",
                 "rendering": "select",
                 "conceptMappings": [],
                 "answers": [
@@ -1050,7 +1070,30 @@
                   }
                 ]
               },
+              "historicalExpression": "_.isEmpty(HD.getObject('rawPrevObs').getValue('18c93362-69c7-4343-bb3e-7e6fdae66307')) ? undefined : HD.getObject('rawPrevObs').getValue('18c93362-69c7-4343-bb3e-7e6fdae66307')",
               "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Pills Dispensed",
+              "type": "obs",
+              "required": true,
+              "id": "pillsDispensed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "82388a45-07a3-4248-a296-3e8951670fab",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "label": "CTX",
+                    "concept": "9844649e-0411-4011-a1f8-4a0da4155c76"
+                  },
+                  {
+                    "label": "Dapsone",
+                    "concept": "44209b47-f2d4-412b-991b-2cdd076f9361"
+                  }
+                ]
+              },
               "validators": []
             },
             {

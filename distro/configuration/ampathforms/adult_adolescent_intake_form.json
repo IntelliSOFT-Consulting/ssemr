@@ -510,7 +510,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(bpSystolic) || bpSystolic < 0",
-                  "message": "Systolic Blood Pressure should not be less than 0"
+                  "message": "Boold Pressure Systolic should not be less than 0"
                 }
               ]
             },
@@ -530,7 +530,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(bpDiastolic) || bpDiastolic < 0",
-                  "message": "Diastolic Blood Pressure should not be less than 0"
+                  "message": "Boold Pressure Diastolic should not be less than 0"
                 }
               ]
             },
@@ -1014,23 +1014,10 @@
               "required": false,
               "id": "cbc",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "text",
                 "concept": "86ad8bcb-3a77-4560-8d38-2af869f1f0a2",
                 "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
-                    "label": "Negative"
-                  },
-                  {
-                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
-                    "label": "HEI"
-                  }
-                ]
+                "answers": []
               },
               "validators": []
             },
@@ -1065,23 +1052,10 @@
               "required": false,
               "id": "pregnancyTest",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "text",
                 "concept": "340aeec6-a9cb-42d4-82bc-1ca888d8d2e8",
                 "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
-                    "label": "Negative"
-                  },
-                  {
-                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
-                    "label": "HEI"
-                  }
-                ]
+                "answers": []
               },
               "validators": [],
               "hide": {
@@ -1117,23 +1091,10 @@
               "required": false,
               "id": "HBsAg",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "text",
                 "concept": "a86bf807-1f1d-4b31-ba72-b7b5b55785e7",
                 "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
-                    "label": "Negative"
-                  },
-                  {
-                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
-                    "label": "HEI"
-                  }
-                ]
+                "answers": []
               },
               "validators": []
             },
@@ -1143,23 +1104,10 @@
               "required": false,
               "id": "hcv",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "text",
                 "concept": "b16f4039-e93f-47a9-a0ec-114b98003518",
                 "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
-                    "label": "Negative"
-                  },
-                  {
-                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
-                    "label": "HEI"
-                  }
-                ]
+                "answers": []
               },
               "validators": []
             },
@@ -1174,16 +1122,16 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "7acfafa4-f19b-485e-97a7-c9e002dbe37a",
-                    "label": "Positive"
+                    "concept": "a1dcc066-550c-42a3-90aa-83d8336cb7d5",
+                    "label": "POSITIVE"
                   },
                   {
-                    "concept": "718b4589-2a11-4355-b8dc-aa668a93e098",
-                    "label": "Negative"
+                    "concept": "f9c1016a-dead-42c1-8ea3-7a1325f1159c",
+                    "label": "NEGATIVE"
                   },
                   {
-                    "concept": "2cca0148-5045-4ade-80a1-69e88c65d868",
-                    "label": "HEI"
+                    "concept": "5d8d6b9f-1acf-4a4c-a79c-acd0ccd32df8",
+                    "label": "Unknown"
                   }
                 ]
               },

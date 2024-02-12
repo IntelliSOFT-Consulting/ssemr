@@ -248,7 +248,7 @@
                 "answers": [
                   {
                     "concept": "17f90888-9c88-4db2-8750-edb1d760a9ca",
-                    "label": "ANC Clinic"
+                    "label": "ANC"
                   },
                   {
                     "concept": "cb976d23-ab3e-4369-a88f-73f56505783b",
@@ -256,7 +256,7 @@
                   },
                   {
                     "concept": "8244fd10-f813-4e52-a13e-9e3df7cd599c",
-                    "label": "Entry Point - OPD"
+                    "label": "OPD"
                   },
                   {
                     "concept": "62cceeab-adf9-4f3b-bdb3-89687557ecab",
@@ -267,12 +267,8 @@
                     "label": "Index Testing"
                   },
                   {
-                    "concept": "0464a6fd-d3c5-427b-b147-3f156ac86d63",
-                    "label": "Other Entry Point (Specify)"
-                  },
-                  {
                     "concept": "26560ed4-3ccc-4f85-85f1-f2c9f9238d3b",
-                    "label": "Pediatric Clinic"
+                    "label": "Pediatric"
                   },
                   {
                     "concept": "dfa49cd5-3859-4184-84cc-ada016092680",
@@ -284,11 +280,35 @@
                   },
                   {
                     "concept": "ec5d13de-ee22-4d8a-b39c-bdee6cd3d88c",
-                    "label": "VCT Clinic"
+                    "label": "VCT"
+                  },
+                  {
+                    "concept": "675702bb-8456-4e10-86ca-65ee8b70d1bd",
+                    "label": "Nutrition"
+                  },
+                  {
+                    "concept": "0464a6fd-d3c5-427b-b147-3f156ac86d63",
+                    "label": "Other Entry Point"
                   }
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "Other Entry Point (Specify)",
+              "type": "obs",
+              "required": true,
+              "id": "otherEntryPoint",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "80732fbe-6f6f-4fca-bbd6-3507e411af92",
+                "conceptMapping": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "entryPointOfHIVTestedPositive !== '0464a6fd-d3c5-427b-b147-3f156ac86d63'"
+              }
             },
             {
               "label": "Date of HIV Re-testing before ART",
