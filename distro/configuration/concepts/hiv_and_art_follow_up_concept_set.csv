@@ -29,7 +29,7 @@ e38e6ce2-92d9-4382-927b-5555ff9fa850,Stage 1 ;Stage 2 ;Stage 3;Stage 4,,WHO Stag
 4b = AZT/3TC + EFV;
 4c = ABC/3TC (120/60) + LPV/r;
 4d = ABC/3TC (120/60) + DTG50;
-4e: ABC/3TC (120/60)+DTG10;
+4e = ABC/3TC (120/60)+DTG10;
 4f = ABC/3TC + NVP;
 4g = ABC/3TC (120/60) + EFV (200mg);
 4h = TDF/3TC/EFV;
@@ -46,7 +46,7 @@ e38e6ce2-92d9-4382-927b-5555ff9fa850,Stage 1 ;Stage 2 ;Stage 3;Stage 4,,WHO Stag
 5g = AZT/3TC + DTG50;
 5h = ABC/3TC + DTG50;
 5i = ABC/3TC + LPV/r;
-5j: AZT/3TC (120/60)+DTG10;
+5j = AZT/3TC (120/60)+DTG10;
 Other ART Regimen",,ARV Regimen,Question,Coded,,
 cf5c7deb-f67c-4406-82ea-d619e502f47c,,,Currently Breastfeeding?,Question,Boolean,,
 7ddb08f2-09e8-48ef-a08f-3744467fec48,,,INH,Question,Boolean,,
