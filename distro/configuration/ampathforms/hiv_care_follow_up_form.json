@@ -1855,7 +1855,7 @@
                     "concept": "5efe8d99-c65e-4136-8820-5f3646437ff7"
                   },
                   {
-                    "label": "4c = TDF/3TC (120/60) + LPV/r",
+                    "label": "4c = ABC/3TC (120/60) + LPV/r",
                     "concept": "f8f64be8-ccb4-404d-b99e-3c4975155da5"
                   },
                   {
@@ -1863,7 +1863,7 @@
                     "concept": "28c5d192-ba71-4ef5-8604-ecf6bd177126"
                   },
                   {
-                    "label": "4e = ABC/3TC(120/60mg)+DTG10",
+                    "label": "4e = ABC/3TC (120/60)+DTG10",
                     "concept": "3eaf04dc-e284-42f7-860e-02cda37cf230"
                   },
                   {
@@ -1933,6 +1933,10 @@
                   {
                     "label": "Other Regimen",
                     "concept": "d75c973c-06d4-43d2-a57d-6340fc8c0100"
+                  },
+                  {
+                    "label": "5j = AZT/3TC (120/60) + DTG10",
+                    "concept": "78e49624-0e33-4374-93b7-60b132b26dae"
                   }
                 ]
               },
