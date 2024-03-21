@@ -95,7 +95,7 @@
         "validation": {
           "required": false
         }
-      },    
+      },
       {
         "id": "txSupporterPhoneNo",
         "type": "person attribute",
@@ -197,6 +197,19 @@
         "useAddressHierarchy": {
           "searchAddressByLevel": true
         }
+      }
+    }
+  },
+  "@openmrs/esm-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "remove": [
+          "home-appointments",
+          "active-visits-widget"
+        ]
+      },
+      "homepage-dashboard-slot": {
+        "remove": ["home-appointments", "active-visits-widget"]
       }
     }
   }
