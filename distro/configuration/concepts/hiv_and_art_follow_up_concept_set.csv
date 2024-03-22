@@ -59,13 +59,15 @@ e38e6ce2-92d9-4382-927b-5555ff9fa850,Stage 1 ;Stage 2 ;Stage 3;Stage 4,,WHO Stag
 5i = ABC/3TC + LPV/r;
 5j = AZT/3TC (120/60)+DTG10;
 Other ART Regimen",,ARV Regimen,Question,Coded,,
-cf5c7deb-f67c-4406-82ea-d619e502f47c,Yes;No,,Currently Breastfeeding?,Question,Coded,,
-5dcb1bc9-ee89-4b57-9493-a1f245c5ee8b,Yes;No,,Is the client Pregnant?,Question,Coded,,
-7ddb08f2-09e8-48ef-a08f-3744467fec48,Yes;No,,INH,Question,Coded,,
-da20f4fc-94b4-421c-896c-cf16a834227a,Yes;No,,Enroll Patient To PMTCT,Question,Coded,,
-1d593268-8a2d-4030-bf1d-9c341d47f875,Yes;No,,PMTCT - HIV & ART Follow up,Question,Coded,,
-da20f4fc-94b4-421c-896c-cf16a834227a,Yes;No,,Enroll Patient To PMTCT,Question,Coded,,
-58ab89cd-6674-480b-95a0-5b761b0275cb,Yes;No,,On TB Treatment,Question,Coded,,
+cf5c7deb-f67c-4406-82ea-d619e502f47c,Yes; No,,Currently Breastfeeding?,Question,Coded,,
+5dcb1bc9-ee89-4b57-9493-a1f245c5ee8b,Yes; No,,Is the client Pregnant?,Question,Coded,,
+7ddb08f2-09e8-48ef-a08f-3744467fec48,Yes; No,,INH,Question,Coded,,
+da20f4fc-94b4-421c-896c-cf16a834227a,Yes; No,,Enroll Patient To PMTCT,Question,Coded,,
+1d593268-8a2d-4030-bf1d-9c341d47f875,Yes; No,,PMTCT - HIV & ART Follow up,Question,Coded,,
+da20f4fc-94b4-421c-896c-cf16a834227a,Yes; No,,Enroll Patient To PMTCT,Question,Coded,,
+58ab89cd-6674-480b-95a0-5b761b0275cb,Yes; No,,On TB Treatment,Question,Coded,,
+147b8be8-d657-4e46-8970-6f9983b27722,Yes; No,,Current Cough,Question,Coded,,
+6e259aec-edea-4ee0-8aa8-4e03f266cd60,Yes; No,,Is the client on CTX,Question,Coded,,
 b6ae8e33-aa58-47e4-84be-5b8599a177b7,,"FP Pregnant ; EDD ;PMTCT - HIV & ART Follow up ; Enroll Patient To PMTCT; Current on FP ; FP Method ;Currently Breastfeeding?;  On TB Treatment ;Date Started TB Treatment ; TB Unit Number;TB Clinic Enrolled;Date Started TB RX  ; TB Regimen For Children;Side Effects ; New OI (other Problems);WHO Stage ; Cotrimoxazole/Dapsone,ART Followup; CTX Adherence; Reason why Adherence is Fair; Reason why Adherence is Poor;CTX Dose;INH ; Number of Pill Dispensed(INH) ;ARV Regimen ; Number of Days Dispensed",ART Follow up - Information,Misc,N/A,,
 1a07bffa-2e01-43bb-880e-c68c02300b36,Adherence Good ; Adherence Fair ; Adherence Poor,,EAC Results,Question,Coded,,
 46ae050e-e1b6-48e6-aa1f-bba975347f5a,Adherence Good ; Adherence Fair ; Adherence Poor,,Classification Of Adherence(First EAC session),Question,Coded,,
@@ -80,3 +82,16 @@ d5d1d355-9e77-4e11-b733-884974f51169,Yes;No,,was counselling done?,Question,Code
 0fc3cc86-6c9f-4d79-9c39-900dab27a33c,Refer ; Consult ;Link/Provide;None,,Plan,Question,Coded,,
 9890cc1e-dbaf-49ec-82bb-1093dcf92ab6,,Plan;Hospitalised; Number of Days Hospitalized ; Clinician Name,Follow up Information,Misc,N/A,,
 beffd410-b9a4-4cfd-9a29-22512980de1b,,"ART Follow up - Information ; Viral Load Information, ; Follow up Information",HIV AND ART FOLLOW UP FORM,Misc,N/A,,
+13498474-ba95-4fec-8010-c8c5e24748ff,"Nausea;
+Rash;
+Diarrhoea;
+Anaemia;
+FAT changes;
+B, N burning/numb/tingling;
+CNS: dizzy, anxiety, nightmare, depression;
+Jaundice;
+Abdominal pain;
+Persistent headaches",,Side Effects,Question,Coded,,
+b0058799-4655-471d-8124-6acd14c6beb1,"Toxicity/side effects;
+Share with others;
+",,Reason why Adherence is Poor,Question,Coded,,
