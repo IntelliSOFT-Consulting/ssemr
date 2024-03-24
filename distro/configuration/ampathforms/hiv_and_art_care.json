@@ -511,13 +511,13 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "familyMemberPhoneNumber && (!familyMemberPhoneNumber.startsWith('+211') || familyMemberPhoneNumber.length < 13 || familyMemberPhoneNumber.length > 13)",
-                      "message": "The phone number should start with a country code, e.g., +211 and should be at least 9 digits long."
+                      "failsWhenExpression": "familyMemberPhoneNumber && !familyMemberPhoneNumber.match(/^\\+[0-9]{1,3}[0-9]{9,9}$/)",
+                      "message": "The phone number should start with a country code, e.g., +211, and should be at least 9 digits after the country code."
                     }
                   ],
                   "alert": {
-                    "alertWhenExpression": "familyMemberPhoneNumber && (!familyMemberPhoneNumber.startsWith('+211') || familyMemberPhoneNumber.length < 13 || familyMemberPhoneNumber.length > 13)",
-                    "message": "The phone number should start with a country code, e.g., +211 and should be at least 9 digits long."
+                    "alertWhenExpression": "familyMemberPhoneNumber && !familyMemberPhoneNumber.match(/^\\+[0-9]{1,3}[0-9]{9,9}$/)",
+                    "message": "The phone number should start with a country code, e.g., +211, and should be at least 9 digits after the country code."
                   }
                 },
                 {

@@ -741,7 +741,7 @@
                     "label": "Suggestive"
                   },
                   {
-                    "concept": "60c1d4e9-09f4-4fe1-9960-52738f01d3a3",
+                    "concept": "f2c2cdcf-550f-427c-96af-52b6a12c3d42",
                     "label": "Inconclusive"
                   },
                   {
@@ -1327,7 +1327,7 @@
               "id": "artRegimenNoOfPillsDispensedCTX",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "3fa33347-9871-497b-81f3-7a791b9f4bae",
+                "concept": "043177ba-5090-4369-896f-982f046773d6",
                 "answers": [
                   {
                     "label": "0 days",
@@ -1379,13 +1379,13 @@
                 "concept": "0cb0b2c1-6609-4d98-9ebf-72ba3f33118d",
                 "conceptMappings": [],
                 "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "true"
+                   {
+                    "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+                    "label": "Yes"
                   },
                   {
-                    "label": "No",
-                    "concept": "false"
+                    "concept": "f9f633a5-1544-4c44-9394-a7f746a12dff",
+                    "label": "No"
                   }
                 ]
               },
@@ -1401,7 +1401,7 @@
                 "concept": "d8a05f0f-3a39-4338-b40e-45567d5fd406"
               },
               "hide": {
-                "hideWhenExpression": "clientDapsone !== 'true'"
+                "hideWhenExpression": "clientDapsone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               },
               "validators": [
                 {
@@ -1437,7 +1437,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "clientDapsone !== 'true'"
+                "hideWhenExpression": "clientDapsone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               }
             },
             {
@@ -1652,7 +1652,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "clientDapsone !== 'true'"
+                "hideWhenExpression": "clientDapsone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               }
             },
             {
@@ -1661,7 +1661,7 @@
               "id": "artRegimenNoOfPillsDispensedDapsone",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "3fa33347-9871-497b-81f3-7a791b9f4bae",
+                "concept": "1c8a00ad-8d9c-48e0-8011-8f79f5f9fa05",
                 "answers": [
                   {
                     "label": "0 days",
@@ -1700,7 +1700,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "clientDapsone !== 'true'"
+                "hideWhenExpression": "clientDapsone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               }
             },
             {
@@ -1711,13 +1711,13 @@
                 "rendering": "radio",
                 "concept": "9a67ecbf-5229-4de0-a533-382a87c01d76",
                 "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "true"
+                   {
+                    "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+                    "label": "Yes"
                   },
                   {
-                    "label": "No",
-                    "concept": "false"
+                    "concept": "f9f633a5-1544-4c44-9394-a7f746a12dff",
+                    "label": "No"
                   }
                 ]
               }
@@ -1732,7 +1732,7 @@
                 "isSimpleValue": true
               },
               "hide": {
-                "hideWhenExpression": "anyOtherMedsGiven !== 'true'"
+                "hideWhenExpression": "anyOtherMedsGiven !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               }
             }
           ]
@@ -1748,7 +1748,7 @@
           "questions": [
             {
               "label": " ART regimen given",
-              "id": "ArtRegimen",
+              "id": "ArtRegimenAdults",
               "required": true,
               "questionOptions": {
                 "concept": "23322fd6-3dbb-410e-8bee-6210dfcd5f71",
@@ -1834,6 +1834,10 @@
                   {
                     "label": "2k=TDF/3TC/DTG",
                     "concept": "25f0cca5-902d-4e36-9e4f-5ce5da744a75"
+                  },
+                  {
+                    "label": "Other Regimen",
+                    "concept": "d75c973c-06d4-43d2-a57d-6340fc8c0100"
                   }
                 ]
               },
@@ -1845,8 +1849,21 @@
               }
             },
             {
+              "label": "Other Regimen Specify",
+              "required": false,
+              "id": "otherRigimenAdult",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b0afac64-54b5-412c-86d0-7cf5dc6afb35",
+                "isSimpleValue": true
+              },
+              "hide": {
+                "hideWhenExpression": "ArtRegimenAdults !== 'd75c973c-06d4-43d2-a57d-6340fc8c0100'"
+              }
+            },
+            {
               "label": " ART regimen given",
-              "id": "ArtRegimen",
+              "id": "ArtRegimenChild",
               "required": true,
               "questionOptions": {
                 "concept": "23322fd6-3dbb-410e-8bee-6210dfcd5f71",
@@ -1936,6 +1953,10 @@
                   {
                     "label": "5i = ABC/3TC +LPV/r",
                     "concept": "50b60d77-186d-4a0d-8784-659ee2d60ec9"
+                  },
+                  {
+                    "label": "Other Regimen",
+                    "concept": "d75c973c-06d4-43d2-a57d-6340fc8c0100"
                   }
                 ]
               },
@@ -1947,12 +1968,25 @@
               }
             },
             {
+              "label": "Other Regimen Specify",
+              "required": false,
+              "id": "otherRigimenChildren",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b0afac64-54b5-412c-86d0-7cf5dc6afb35",
+                "isSimpleValue": true
+              },
+              "hide": {
+                "hideWhenExpression": "ArtRegimenChild !== 'd75c973c-06d4-43d2-a57d-6340fc8c0100'"
+              }
+            },
+            {
               "label": "Number of Days Dispensed",
               "required": true,
               "id": "artRegimenNoOfDaysDispensed",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "4ab28128-7ef3-452d-86d5-73561761b08a",
+                "concept": "417625de-7d5e-45e4-bec7-60d72c94e657",
                 "conceptMappings": [],
                 "answers": [
                   {
@@ -2732,7 +2766,7 @@
             {
               "label": "CD4 Count",
               "id": "cd4Count",
-              "required": true,
+              "required": false,
               "questionOptions": {
                 "answers": [],
                 "concept": "809dd0f5-ce54-441c-b835-a2a8b06a6140",
@@ -2797,6 +2831,10 @@
               "questionOptions": {
                 "rendering": "numeric",
                 "concept": "01c3ce55-b7eb-45f5-93d5-bace353e3cfd"
+              },
+              "alert": {
+                "alertWhenExpression": "vlResults > 1000",
+                "message": "VL is above 1000, please fill the EAC Form"
               }
             },
             {
@@ -2865,12 +2903,12 @@
                 "concept": "32fb9948-d296-4eec-8dfd-699539ba5b05",
                 "answers": [
                   {
-                    "label": "Yes",
-                    "concept": "true"
+                    "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+                    "label": "Yes"
                   },
                   {
-                    "label": "No",
-                    "concept": "false"
+                    "concept": "f9f633a5-1544-4c44-9394-a7f746a12dff",
+                    "label": "No"
                   }
                 ]
               }
@@ -2885,7 +2923,7 @@
                 "concept": "9fc6b318-054e-45c0-983b-912d1c93e86e"
               },
               "hide": {
-                "hideWhenExpression": "otherInvestigationDone !== 'true'"
+                "hideWhenExpression": "otherInvestigationDone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               }
             }
           ]
@@ -2906,7 +2944,7 @@
               "id": "ptPlan",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "0fc3cc86-6c9f-4d79-9c39-900dab27a33c",
+                "concept": "3352d2b2-67b6-4e84-9b2c-1baef41b0d05",
                 "conceptMappings": [],
                 "answers": [
                   {

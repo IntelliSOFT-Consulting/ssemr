@@ -45,9 +45,27 @@ d110f0ef-18bd-42a3-a4db-58f9d8469a39,,Other ART Regimen Specify,Other ART Regime
 9f1aadeb-f23f-45fb-b50a-dd34e918303b,,Regimen Change Date,Date,Date,,,,Question,Date,
 b4d8805f-40ff-4c9d-9118-feeab45ad8be,,Other Reason For Regimen Change(First Line),Other Reason (Specify),Other Reason (Specify),,,,Misc,N/A,
 e1a04b37-f80b-4e27-968c-02e2566c7d82,,Other Reason For Regimen Change(Second Line),Other Reason (Specify),Other Reason (Specify),,,,Misc,N/A,
-f0941906-3277-4ca0-891a-a58efb541c66,,Reason For Regimen Change(First Line),Reason,Reason For Regimen Change,,,,Question,Coded,Toxic Side Effect ; Pregnancy ; Risk of pregnancy ; Newly diagnosed TB ; New drug available ; Drug stockout ; Other Reason (Specify)
-847b1998-5b2f-4818-a6c0-4284e2f85403,,Reason For Regimen Change(Second Line),Reason,Reason For Regimen Change,,,,Question,Coded,Toxic Side Effect ; Pregnancy ; Risk of pregnancy ; Newly diagnosed TB ; New drug available ; Drug stockout ; Other Reason (Specify)
-23074a22-84d7-4515-a295-6906773f058f,,Initial Regimen Change Reason,Regimen Change Reason,Regimen Change Reason,,,,Question,Coded,Toxic Side Effect ; Pregnancy ; Risk of pregnancy ; Newly diagnosed TB ; New drug available ; Drug stockout ; Other Reason (Specify)
+f0941906-3277-4ca0-891a-a58efb541c66,,Reason For Regimen Change(First Line),Reason,Reason For Regimen Change,,,,Question,Coded,"Toxicity/side effects; 
+Pregnancy ; 
+Risk of pregnancy ; 
+Newly diagnosed TB ; 
+New drug available; 
+Drug stockout ; 
+Other Reason For Regimen Change(First Line)"
+847b1998-5b2f-4818-a6c0-4284e2f85403,,Reason For Regimen Change(Second Line),Reason,Reason For Regimen Change,,,,Question,Coded,"Toxicity/side effects; 
+Pregnancy ; 
+Risk of pregnancy ; 
+Newly diagnosed TB ; 
+New drug available; 
+Drug stockout ; 
+Other Reason For Regimen Change(First Line)"
+23074a22-84d7-4515-a295-6906773f058f,,Initial Regimen Change Reason,Regimen Change Reason,Regimen Change Reason,,,,Question,Coded,"Toxicity/side effects; 
+Pregnancy ; 
+Risk of pregnancy ; 
+Newly diagnosed TB ; 
+New drug available; 
+Drug stockout ; 
+Other Reason For Regimen Change(First Line)"
 29bfdd61-7a8d-4bdc-87ea-48ee3643ad7a,,Other Reason(Second Regimen Change),Reason,Other Reason(Second Regimen Change),,,,Question,Text,
 b59fff1c-ab4f-4686-9435-783994432356,,Other Reason(First Line Regimen Change),Other Reason (Specify),Reason For Regimen Change,,,,Question,Text,
 bd97cacd-4a91-4901-8803-3a4a2e5f1ca8,,2a = AZT/3TC + DTG,2a = AZT/3TC + DTG,,,,,Misc,N/A,
@@ -190,7 +208,7 @@ Moderate Acute Malnutrition;
 Severe Acute Malnutrition"
 c45f6876-3f10-11e4-adec-0800271c1b75,,Normal,,,,,,Misc,N/A,
 5cd2823c-fa3b-47e4-9a20-9802ebbec8c5,,Abnormal,,,,,,Misc,N/A,
-d682035f-f1e5-4ec5-97fe-b7f69c1c916,,Systemic finding - Head,Systemic finding - Head,,,,,Question,Coded,"Normal;
+388fc432-954d-4bcd-9c32-dc14d6b55891,,Systemic finding - Head,Systemic finding - Head,,,,,Question,Coded,"Normal;
 Abnormal"
 a1d22675-5dad-4d72-bea7-77e4f23ea3c2,,Thin sparse hair,,,,,,Misc,N/A,
 02b1784b-75bf-4cd1-ab72-5e25382a2b33,,White scaly scalp lesion,,,,,,Misc,N/A,
@@ -224,7 +242,7 @@ d946be39-07d1-4e1b-9990-6f626445b8a7,,Angular cheilitis,,,,,,Misc,N/A,
 6aa356a1-7f6d-4fff-a48d-063273bd75bc,,Gingival edema and bleeding,,,,,,Misc,N/A,
 ec7b937c-6e4b-4533-8c75-281c806d791a,,Oral thrash,,,,,,Misc,N/A,
 8b7dd03f-5c59-4118-9565-ecd990263258,,Oral Ulcer,,,,,,Misc,N/A,
-fa6b9635-8458-4902-8a70-ee54ce610058,,Abnormal Findings - Mouth,,,,,,,,"Angular cheilitis;
+fa6b9635-8458-4902-8a70-ee54ce610058,,Abnormal Findings - Mouth,,,,,,Question,Coded,"Angular cheilitis;
 Gingival edema and bleeding;
 Oral thrash;
 Oral Ulcer;
