@@ -31,9 +31,12 @@
 				"label": "Provider:",
 				"type": "encounterProvider",
 				"questionOptions": {
-				  "rendering": "ui-select-extended"
+				  "rendering": "text",
+				  "concept": "7f77c914-aff6-4378-ad07-755ccf99353a",
+				  "conceptMappings": [],
+				  "answers": []
 				},
-				"id": "encProvider "
+				"id": "encProvider"
 			  },
 			  {
 				"label": "Location:",
@@ -258,12 +261,12 @@
 				  "conceptMappings": [],
 				  "answers": [
 					{
-					  "concept": "535ea56b-0138-4804-ab23-e70f2dbe0b61",
-					  "label": "Fair"
-					},
-					{
 					  "concept": "714752ad-61df-44e0-ae40-fa9bf4f9d831",
 					  "label": "Good"
+					},
+					{
+					  "concept": "535ea56b-0138-4804-ab23-e70f2dbe0b61",
+					  "label": "Fair"
 					},
 					{
 					  "concept": "f05f31c1-5f06-4ada-8cbd-a877cb06442a",
@@ -340,10 +343,6 @@
 					  "label": "Lost/Damaged"
 					},
 					{
-					  "concept": "a393d1ee-e6eb-4f84-b75c-848a99343760",
-					  "label": "Other First EAC Barrier Reason"
-					},
-					{
 					  "concept": "68a10b27-ab05-470c-b2c0-0a13e26b14c1",
 					  "label": "Pill Burden"
 					},
@@ -353,7 +352,7 @@
 					},
 					{
 					  "concept": "a9b92884-e629-4a6a-8214-0557f52ebb97",
-					  "label": "Ran out Of Medcation"
+					  "label": "Ran out Of Medication"
 					},
 					{
 					  "concept": "7a15f044-a900-4c68-8d66-40f93aa94102",
@@ -364,7 +363,7 @@
 					  "label": "Sharing Medications"
 					},
 					{
-					  "concept": "13498474-ba95-4fec-8010-c8c5e24748ff",
+					  "concept": "e2e0c503-842c-4ddf-891d-111c65322dc5",
 					  "label": "Side Effects"
 					},
 					{
@@ -374,6 +373,10 @@
 					{
 					  "concept": "a437c938-ff0f-44f6-82d1-9363d593638d",
 					  "label": "Transport"
+					},
+					{
+					  "concept": "a393d1ee-e6eb-4f84-b75c-848a99343760",
+					  "label": "Other EAC Barrier Reason"
 					}
 				  ]
 				},
@@ -490,7 +493,7 @@
 				},
 				"validators": [],
 				"hide": {
-				  "hideWhenExpression": "firstEACTools !== 'fde15ffa-a932-4283-a2fb-644e2a6f78be'"
+				  "hideWhenExpression": "isEmpty(firstEACTools) || !arrayContains(firstEACTools, 'fde15ffa-a932-4283-a2fb-644e2a6f78be')"
 				}
 			  },
 			  {
@@ -546,13 +549,13 @@
 				  "conceptMappings": [],
 				  "answers": [
 					{
-					  "concept": "true",
-					  "label": "Yes"
-					},
-					{
-					  "concept": "false",
-					  "label": "No"
-					}
+						"concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+						"label": "Yes"
+					  },
+					  {
+						"concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
+						"label": "No"
+					  }
 				  ]
 				},
 				"validators": []
@@ -572,7 +575,7 @@
 					  "label": "Yes"
 					},
 					{
-					  "concept": "f9f633a5-1544-4c44-9394-a7f746a12dff",
+					  "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
 					  "label": "No"
 					}
 				  ]
@@ -590,11 +593,11 @@
 				  "conceptMappings": [],
 				  "answers": [
 					{
-					  "concept": "true",
+					  "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
 					  "label": "Yes"
 					},
 					{
-					  "concept": "false",
+					  "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
 					  "label": "No"
 					}
 				  ]
@@ -612,11 +615,11 @@
 				  "conceptMappings": [],
 				  "answers": [
 					{
-					  "concept": "true",
+					  "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
 					  "label": "Yes"
 					},
 					{
-					  "concept": "false",
+					  "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
 					  "label": "No"
 					}
 				  ]
@@ -746,12 +749,16 @@
 				"id": "repeatVLResult",
 				"questionOptions": {
 				  "rendering": "number",
-				  "concept": "01c3ce55-b7eb-45f5-93d5-bace353e3cfd",
+				  "concept": "68c60487-62b5-45af-9773-0bc163b9e076",
 				  "min": 0,
 				  "conceptMappings": [],
 				  "answers": []
 				},
-				"validators": []
+				"validators": [],
+				"alert": {
+				  "alertWhenExpression": "repeatVLResult >= 1000",
+				  "message": "VL is 1000 or above, please fill the EAC Details"
+				}
 			  },
 			  {
 				"label": "Repeat Viral Load result <1000c/ml, ≥1000c/ml",

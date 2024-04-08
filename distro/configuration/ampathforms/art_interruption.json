@@ -1,5 +1,8 @@
 {
   "name": "I. 11 - ART treatment interruption",
+  "published": true,
+	"retired": false,
+	"encounter": "ART treatment interruption",
   "pages": [
     {
       "label": "ART treatment interruption – Stop or Lost (missed drug pick-up)",
@@ -63,7 +66,7 @@
                   },
                   {
                     "label": "No",
-                    "concept": "f9f633a5-1544-4c44-9394-a7f746a12dff"
+                    "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e"
                   }
                 ]
               },
