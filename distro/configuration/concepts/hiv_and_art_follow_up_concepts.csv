@@ -178,7 +178,10 @@ Other ART Regimen"
 b0afac64-54b5-412c-86d0-7cf5dc6afb35,,Other ART Regimen Specify,Other ART Regimen Specify,,,,,Question,Text,
 4ab28128-7ef3-452d-86d5-73561761b08a,,Number of Days Dispensed,Number of Days,Number of Days Dispensed,,,,Question,Numeric,
 fc684917-4deb-42cf-9245-8a13c6a232bc,,Date VL Sample Collected?,Date VL Sample Collected?,Date VL Sample Collected?,,,,Question,Date,
-8b5ef5c4-3c88-49b8-87e5-cb8d30caa77d,,VL Results,VL Result,VL Results,,,,Question,Numeric,
+62df0577-a1f7-493e-80d2-e458998f1a2f,,Below Detectable (BDL),Below Detectable (BDL),Below Detectable (BDL),,,,Misc,N/A,
+12e201ff-c83a-4f3f-920e-37288d39fa55,,Viral Load Value,Viral Load Value,Viral Load Value,,,,Misc,N/A,
+8b5ef5c4-3c88-49b8-87e5-cb8d30caa77d,,VL Results,VL Result,VL Results,,,,Question,Coded,"Below Detectable (BDL);
+Viral Load Value"
 714752ad-61df-44e0-ae40-fa9bf4f9d831,,Adherence Good,Good,Adherence Good,,,,Misc,N/A,
 535ea56b-0138-4804-ab23-e70f2dbe0b61,,Adherence Fair,Fair,Adherence Fair,,,,Misc,N/A,
 f05f31c1-5f06-4ada-8cbd-a877cb06442a,,Adherence Poor,Poor,Adherence Poor,,,,Misc,N/A,
@@ -570,13 +573,22 @@ CXR - Lab Test;
 HepB;
 RFTs;
 LFTs;
-No Information"
+No Information;
+Not Applicable"
 e8efb800-7c83-4616-ad7e-46c74ef0acd0,,Nutritional support,Nutritional support,,,,,Misc,N/A,
 99d197a6-c316-11e9-9cb5-2a2ae2dbcce4,,Infant feeding,Infant feeding,,,,,Misc,N/A,
-d3f86020-1ce2-4bff-8dbc-42bc98fcf080,,CVS,CVS,,,,,Misc,N/A,
+d3f86020-1ce2-4bff-8dbc-42bc98fcf080,,Community Health Worker,Community Health Worker,,,,,Misc,N/A,
+449c62ad-689f-4b6c-8623-d95e1ec7c9cd,,Orphans & Vulnerable Children (OVC),Orphans & Vulnerable Children (OVC),,,,,Misc,N/A,
+dd57ccdf-a0f0-408c-a9d3-3c97552a9c19,,Family Planning (FP),Family Planning (FP),,,,,Misc,N/A,
+a233c797-30b1-4418-bf8e-64f63608c3cc,,Gender-Based Violence (GBV),Gender-Based Violence (GBV),,,,,Misc,N/A,
+61c88f46-7fa7-4c5d-bd22-6d409b0a33d5,,Psychosocial support,Psychosocial support,,,,,Misc,N/A,
 ce7573a3-c680-458a-8abb-a25088d4d261,,Refer or Consult,Refer or Consult,,,,,Question,Coded,"Nutritional support;
 Infant feeding;
-CVS"
+COV;
+Orphans & Vulnerable Children (OVC);
+Family Planning (FP);
+Gender-Based Violence (GBV);
+Psychosocial support"
 9fc6b318-054e-45c0-983b-912d1c93e86e,,Other Investigation Done,Other Investigation Done,,,,,Question,Text,
 a8dd544d-fe87-4ff1-9911-6acdc6847d21,,Duration in months since first starting ART,Duration in months since first starting ART,,,,,Question,Numeric,
 e0e2acbe-f88b-4710-adbd-08637d80ea97,,Duration in months since starting current regimen,Duration in months since starting current regimen,,,,,Question,Numeric,
@@ -630,3 +642,4 @@ d8a05f0f-3a39-4338-b40e-45567d5fd406,,Date started on Dapsone,Date started on Da
 0fa5669b-041d-446d-9ae6-8e88a980858f,,Date of extra session,Date of extra session,,,,,Question,Date,
 2652c9e7-72c5-48ae-b6ee-0bd3dcb65fca,,Is CD4 done?,Is CD4 done?,,,,,Question,Coded,Yes; No
 2cef90d7-7d4f-4bda-accd-8e51e612037f,,Viral Load test done?,Viral Load test done?,,,,,Question,Coded,Yes; No
+fb3df5ea-5527-4fd3-bc09-4ea5a0a6dc22,,Viral Load Result Received?,Viral Load Result Received?,,,,,Question,Coded,Yes; No

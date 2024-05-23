@@ -30,14 +30,13 @@
             },
             {
               "label": "Follow up Date",
-              "type": "obs",
               "required": true,
-              "id": "followUpDate",
+              "id": "appointmentWorkspaceLauncher",
               "questionOptions": {
-                "rendering": "date",
-                "concept": "ee31f5fc-40b8-417d-8350-1a74431c220b"
-              },
-              "validators": []
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add appointments",
+                "workspaceName": "appointments-form-workspace"
+              }
             },
             {
               "label": "Duration in months since first starting ART",
@@ -76,7 +75,7 @@
               ]
             },
             {
-              "label": "Weight (KG)",
+              "label": "Weight (Kg)",
               "id": "weight",
               "required": true,
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? undefined : HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
@@ -96,7 +95,7 @@
               ]
             },
             {
-              "label": "Height(CM)",
+              "label": "Height(cm)",
               "id": "height",
               "required": true,
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? undefined : HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
@@ -154,6 +153,28 @@
               }
             },
             {
+              "label": "Is the client Represented?",
+              "type": "obs",
+              "required": true,
+              "id": "clientRepresented",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b8347e7-3e90-4857-b5cf-7bc449ae21ec",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
               "label": "Current on FP",
               "type": "obs",
               "required": true,
@@ -174,7 +195,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M' || age < 15"
+                "hideWhenExpression": "sex === 'M' || age < 15 || clientRepresented === '78763e68-104e-465d-8ce3-35f9edfb083d'"
               },
               "validators": []
             },
@@ -586,7 +607,7 @@
                   },
                   {
                     "concept": "8942c092-9ea4-4128-bade-060cd1a97c34",
-                    "label": "INH screened negative and currently on INH prophylaxis"
+                    "label": "TB Screened Negative and currently on INH prophylaxis"
                   },
                   {
                     "concept": "19b61c26-6533-4682-bd54-d45ad218e8f5",
@@ -625,10 +646,6 @@
                   {
                     "concept": "ad8ecb63-6b5d-49b2-9a9d-e16d7a0efc40",
                     "label": "FNA,Culture, UltraSound"
-                  },
-                  {
-                    "concept": "1b4f4df7-dddc-4e73-ab18-304c4fd12953",
-                    "label": "TB Diagnosed"
                   }
                 ]
               },
@@ -782,7 +799,7 @@
               }
             },
             {
-              "label": "Type of TB",
+              "label": "Type of TB",         
               "type": "obs",
               "id": "tbDiagnosed",
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('3109983a-98af-4017-a16b-e3bac0c48d25')) ? undefined : HD.getObject('prevEnc').getValue('3109983a-98af-4017-a16b-e3bac0c48d25')",
@@ -805,7 +822,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfTest !=='1b4f4df7-dddc-4e73-ab18-304c4fd12953'"
+                "hideWhenExpression": "currentlyOnTBTreatment !== 'b497171e-0410-4d8d-bbd4-7e1a8f8b504e'"
               }
             },
             {
@@ -900,7 +917,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientRepresented === '78763e68-104e-465d-8ce3-35f9edfb083d'"
+              }
             },
             {
               "label": "Opportunistic Infections",
@@ -962,7 +982,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientRepresented === '78763e68-104e-465d-8ce3-35f9edfb083d'"
+              }
             },
             {
               "label": "Any new Opportunistic Infections",
@@ -2118,10 +2141,6 @@
                     "concept": "188dc5ba-1c33-4789-b39c-267a2ff29b96"
                   },
                   {
-                    "label": "Forgot",
-                    "concept": "188dc5ba-1c33-4789-b39c-267a2ff29b96"
-                  },
-                  {
                     "label": "Felt better",
                     "concept": "675c6d61-1637-48e3-a78f-cb77b4e55b86"
                   },
@@ -2199,10 +2218,6 @@
                   {
                     "label": "Share with others",
                     "concept": "046c6032-7030-4b50-9e8e-831b8ee76bc5"
-                  },
-                  {
-                    "label": "Forgot",
-                    "concept": "188dc5ba-1c33-4789-b39c-267a2ff29b96"
                   },
                   {
                     "label": "Forgot",
@@ -2864,20 +2879,66 @@
               ]
             },
             {
+              "label": "Viral Load Result Received?",
+              "required": true,
+              "type": "obs",
+              "id": "vlResultReceived",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fb3df5ea-5527-4fd3-bc09-4ea5a0a6dc22",
+                "answers": [
+                  {
+                    "concept": "78763e68-104e-465d-8ce3-35f9edfb083d",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "b497171e-0410-4d8d-bbd4-7e1a8f8b504e",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "vlTestDone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
+              }
+            },
+            {
               "label": "VL Results",
+              "required": true,
+              "type": "obs",
+              "id": "vlResultResult",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8b5ef5c4-3c88-49b8-87e5-cb8d30caa77d",
+                "answers": [
+                  {
+                    "concept": "62df0577-a1f7-493e-80d2-e458998f1a2f",
+                    "label": "Below Detectable (BDL)"
+                  },
+                  {
+                    "concept": "12e201ff-c83a-4f3f-920e-37288d39fa55",
+                    "label": "Viral Load value"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "vlResultReceived !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
+              }
+            },
+            {
+              "label": "Record Viral Load value",
               "type": "obs",
               "required": false,
-              "id": "vlResults",
+              "id": "viralLoadValue",
               "questionOptions": {
                 "rendering": "numeric",
                 "concept": "01c3ce55-b7eb-45f5-93d5-bace353e3cfd"
               },
               "hide": {
-                "hideWhenExpression": "vlTestDone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
+                "hideWhenExpression": "vlResultResult !== '12e201ff-c83a-4f3f-920e-37288d39fa55'"
               },
               "alert": {
-                "alertWhenExpression": "vlResults > 1000",
-                "message": "VL is above 1000, please fill the EAC Form"
+                "alertWhenExpression": "viralLoadValue >= 1000",
+                "message": "VL Value is above 1000, please fill the EAC Form"
               }
             },
             {
@@ -2890,7 +2951,7 @@
                 "concept": "80e34f1b-26e8-49ea-9b6e-d7d903a91e26"
               },
               "hide": {
-                "hideWhenExpression": "vlTestDone !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
+                "hideWhenExpression": "vlResultReceived !== '78763e68-104e-465d-8ce3-35f9edfb083d'"
               },
               "validators": [
                 {
@@ -2908,10 +2969,6 @@
                 "rendering": "checkbox",
                 "concept": "f5b60f09-9d8a-4bda-9318-9ef097c77945",
                 "answers": [
-                  {
-                    "label": "No information",
-                    "concept": "6cfc61ed-08ec-45cf-8317-325958dfdb9a"
-                  },
                   {
                     "label": "RPR",
                     "concept": "ef1c0931-32ee-47f5-9ecc-8c18eef2d706",
@@ -2946,6 +3003,14 @@
                     "label": "LFTs",
                     "concept": "4cfb4018-141a-4387-9e2a-6980aa3840c7",
                     "disableWhenExpression": "myValue === '6cfc61ed-08ec-45cf-8317-325958dfdb9a'"
+                  },
+                  {
+                    "label": "No information",
+                    "concept": "6cfc61ed-08ec-45cf-8317-325958dfdb9a"
+                  },
+                  {
+                    "label": "Not Applicable",
+                    "concept": "f2355233-c552-4cd6-802f-0c7c75221f03"
                   }
                 ]
               }
@@ -3000,25 +3065,29 @@
               "required": true,
               "id": "ptPlan",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "checkbox",
                 "concept": "3352d2b2-67b6-4e84-9b2c-1baef41b0d05",
                 "conceptMappings": [],
                 "answers": [
                   {
                     "label": "Refer",
-                    "concept": "8ec83611-795e-44d0-b359-a667a073bf07"
+                    "concept": "8ec83611-795e-44d0-b359-a667a073bf07",
+                    "disableWhenExpression": "myValue === 'f2355233-c552-4cd6-802f-0c7c75221f03'"
                   },
                   {
                     "label": "Consult",
-                    "concept": "5b4c24fd-b3b2-454b-8b26-2300ea774b07"
+                    "concept": "5b4c24fd-b3b2-454b-8b26-2300ea774b07",
+                    "disableWhenExpression": "myValue === 'f2355233-c552-4cd6-802f-0c7c75221f03'"
                   },
                   {
                     "label": "Link/Provide",
-                    "concept": "d521c7e0-207e-4e9d-97e4-e376b38b664f"
+                    "concept": "d521c7e0-207e-4e9d-97e4-e376b38b664f",
+                    "disableWhenExpression": "myValue === 'f2355233-c552-4cd6-802f-0c7c75221f03'"
                   },
                   {
                     "label": "Hospitalised",
-                    "concept": "b87bac5e-b6ca-40a5-a3d0-a3fa34a94f5d"
+                    "concept": "b87bac5e-b6ca-40a5-a3d0-a3fa34a94f5d",
+                    "disableWhenExpression": "myValue === 'f2355233-c552-4cd6-802f-0c7c75221f03'"
                   },
                   {
                     "label": "Not Applicable",
@@ -3047,14 +3116,30 @@
                     "concept": "99d197a6-c316-11e9-9cb5-2a2ae2dbcce4"
                   },
                   {
-                    "label": "CVS",
+                    "label": "Community Health Worker (CHW)",
                     "concept": "d3f86020-1ce2-4bff-8dbc-42bc98fcf080"
+                  },
+                  {
+                    "label": "Orphans & Vulnerable Children (OVC)",
+                    "concept": "449c62ad-689f-4b6c-8623-d95e1ec7c9cd"
+                  },
+                  {
+                    "label": "Family Planning (FP)",
+                    "concept": "dd57ccdf-a0f0-408c-a9d3-3c97552a9c19"
+                  },
+                  {
+                    "label": "Gender-Based Violence (GBV)",
+                    "concept": "a233c797-30b1-4418-bf8e-64f63608c3cc"
+                  },
+                  {
+                    "label": "Psychosocial support",
+                    "concept": "61c88f46-7fa7-4c5d-bd22-6d409b0a33d5"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "ptPlan !== '8ec83611-795e-44d0-b359-a667a073bf07'"
+                "hideWhenExpression": "isEmpty(ptPlan) || !arrayContains(ptPlan, '8ec83611-795e-44d0-b359-a667a073bf07')"
               }
             },
             {
@@ -3067,7 +3152,7 @@
                 "concept": "73aeaec5-4169-40a9-8b59-f799b28a548c"
               },
               "hide": {
-                "hideWhenExpression": "ptPlan !== 'b87bac5e-b6ca-40a5-a3d0-a3fa34a94f5d'",
+                "hideWhenExpression": "isEmpty(ptPlan) || !arrayContains(ptPlan, 'b87bac5e-b6ca-40a5-a3d0-a3fa34a94f5d')",
                 "validators": []
               }
             },
