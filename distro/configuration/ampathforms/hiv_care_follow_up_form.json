@@ -14,14 +14,11 @@
           "questions": [
             {
               "label": "Date scheduled /Visit Date",
-              "type": "obs",
-              "required": true,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('494915d8-4cf3-4c24-9efa-371710992cb3')) ? undefined : HD.getObject('prevEnc').getValue('494915d8-4cf3-4c24-9efa-371710992cb3')",
-              "id": "dateScheduled",
+              "type": "encounterDatetime",
               "questionOptions": {
-                "rendering": "date",
-                "concept": "494915d8-4cf3-4c24-9efa-371710992cb3"
+                "rendering": "ui-select-extended"
               },
+              "id": "encDate",
               "validators": [
                 {
                   "type": "date",
