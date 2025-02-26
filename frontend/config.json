@@ -1,4 +1,61 @@
 {
+  "@openmrs/esm-appointments-app": {
+    "concepts": {
+      "visitQueueNumberAttributeUuid": "c61ce16f-272a-41e7-9924-4c555d0932c5"
+    },
+    "includePhoneNumberInExcelSpreadsheet": true,
+    "allowAllDayAppointments": true,
+    "showServiceQueueFields": true,
+    "showIfActiveVisit": true,
+    "patientIdentifierType": "Unique ART Number",
+    "showUnscheduledAppointmentsTab": false,
+    "appointmentStatuses": [
+      "Scheduled", "Requested", "CheckedIn", "Completed", "Cancelled", "Missed"
+    ],
+    "appointmentTypes": [
+      "Scheduled"
+    ],
+    "extensionSlots": {
+      "scheduled-appointments-panels-slot": {
+        "configure": {
+          "expected-appointments-panel": {
+            "showForPastDate": true,
+            "showForFutureDate": true
+          },
+          "completed-appointments-panel": {
+            "showForPastDate": true,
+            "showForFutureDate": false
+          }
+        }
+      }
+    },
+    "checkInButton": {
+      "enabled": true
+    },
+    "checkOutButton": {
+      "enabled": true
+    },
+    "Translation overrides": {
+      "en": {
+        "Appointments": "Appointment Logs",
+        "appointments": "Appointment Logs"
+      }
+    }
+  },
+ "@openmrs/esm-active-visits-app": {
+    "activeVisits": {
+      "identifiers": [
+        {
+          "header": {
+            "key": "uniqueArtNumber",
+            "default": "Unique ART Number"
+          },
+          "identifierName": "Unique ART Number"
+        }
+      ],
+      "obs": []
+    }
+  },
   "@openmrs/esm-patient-test-results-app": {
     "concepts": [
       {
@@ -61,14 +118,6 @@
         "Patient Summary dashboard": "Client Summary dashboard",
         "visits": "visits history",
         "Visits": "Visits History"
-      }
-    }
-  },
-  "@openmrs/esm-appointments-app": {
-    "Translation overrides": {
-      "en": {
-        "Appointments": "Appointment Logs",
-        "appointments": "Appointment Logs"
       }
     }
   },
@@ -139,7 +188,8 @@
         "uuid": "80fcb21b-f0af-493e-bcd2-75d587fcbbe9",
         "label": "Treatment supporter's name(if disclosed)",
         "validation": {
-          "required": false
+          "required": false,
+          "matches": "^[a-zA-Z\\\\s'\\\\.-]+$"
         }
       },     
       {

@@ -1,7 +1,7 @@
 {
-	"name": "A. 4 - Community linkage",
+	"name": "A. 4 - Community Linkage",
 	"referencedForms": [],
-	"description": "Community linkage",
+	"description": "Community Linkage",
 	"version": "1.0.0",
 	"published": true,
 	"retired": false,
@@ -91,7 +91,13 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!/[a-zA-Z]/.test(covAssigned)",
+									"message": "Input must include at least one letter."
+								}
+							]
 						},
 						{
 							"label": "CHW Phone number",
@@ -136,7 +142,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						}
 					]
 				}

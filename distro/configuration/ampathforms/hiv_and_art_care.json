@@ -1,5 +1,5 @@
 {
-  "name": "C. 6 - Personal, Family, and treatment history",
+  "name": "C. 6 - Personal, Family, And Treatment History",
   "published": true,
   "retired": false,
   "encounter": "Personal Family and treatment history",
@@ -288,7 +288,47 @@
                   "validators": []
                 },
                 {
-                  "label": "Age",
+                  "label": "Family Member Date of Birth Known?",
+                  "id": "familyMemberAgeKnown",
+                  "required": false,
+                  "questionOptions": {
+                    "concept": "320d6da4-b148-4392-ab22-0564d898f9a1",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "label": "Yes",
+                        "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      },
+                      {
+                        "label": "No",
+                        "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Family Member DOB",
+                  "id": "familyMemberDOB",
+                  "required": false,
+                  "questionOptions": {
+                    "concept": "c6bc4aaa-2389-43c7-b108-40b00abf80e3",
+                    "rendering": "date"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "familyMemberAgeKnown !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  }
+                },
+                {
+                  "label": "Estimate Family Member Age",
                   "id": "familyMemberAge",
                   "required": false,
                   "questionOptions": {
@@ -305,7 +345,10 @@
                       "failsWhenExpression": "familyMemberAge < 0 || familyMemberAge > 120",
                       "message": "Age cannot be negative and cannot exceed 120"
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "familyMemberAgeKnown !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  }
                 },
                 {
                   "label": "Sex",
@@ -436,18 +479,67 @@
                   "validators": []
                 },
                 {
-                  "label": "Age",
+                  "label": "Family Member Date of Birth Known?",
+                  "id": "indexFamilyMemberAgeKnown",
+                  "required": false,
+                  "questionOptions": {
+                    "concept": "5f047a36-063c-4ad5-bbb6-65641a37fe75",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "label": "Yes",
+                        "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      },
+                      {
+                        "label": "No",
+                        "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Index Family Member DOB",
+                  "id": "indexFamilyMemberDOB",
+                  "required": false,
+                  "questionOptions": {
+                    "concept": "831b34f3-9f76-400c-abdb-92164bc40fcf",
+                    "rendering": "date"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "isAllowedFutureDates": "false"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "indexFamilyMemberAgeKnown !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  }
+                },
+                {
+                  "label": "Estimate Index - Family Member Age",
                   "id": "indexFamilyMemberAge",
                   "required": false,
                   "questionOptions": {
                     "answers": [],
                     "concept": "638fc8c1-bde8-433f-a50c-7562385b580c",
                     "rendering": "number",
-                    "min": 0,
-                    "max": 120
+                    "min": "0",
+                    "max": "120"
                   },
                   "type": "obs",
-                  "validators": []
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "indexFamilyMemberAge < 0 || indexFamilyMemberAge > 120",
+                      "message": "Age cannot be negative and cannot exceed 120"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "indexFamilyMemberAgeKnown !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  }
                 },
                 {
                   "label": "Sex",
@@ -973,7 +1065,7 @@
               "label": "At Start of ART Date",
               "id": "mileStonesDate",
               "required": true,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('73779d67-7e8f-46fe-b723-8879838da5f8') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('73779d67-7e8f-46fe-b723-8879838da5f8')) ? '' : HD.getObject('prevEnc').getValue('73779d67-7e8f-46fe-b723-8879838da5f8')",
               "questionOptions": {
                 "answers": [],
                 "concept": "73779d67-7e8f-46fe-b723-8879838da5f8",
@@ -991,7 +1083,7 @@
               "label": "WHO Stage",
               "id": "whoStage",
               "required": true,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('e38e6ce2-92d9-4382-927b-5555ff9fa850') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('e38e6ce2-92d9-4382-927b-5555ff9fa850')) ? '' : HD.getObject('prevEnc').getValue('e38e6ce2-92d9-4382-927b-5555ff9fa850')",
               "questionOptions": {
                 "concept": "e38e6ce2-92d9-4382-927b-5555ff9fa850",
                 "rendering": "select",
@@ -1022,7 +1114,7 @@
               "label": "Weight(Kg)",
               "id": "weight",
               "required": false,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? '' : HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
                 "answers": [],
                 "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1035,7 +1127,7 @@
               "label": "Height(cm)",
               "id": "height",
               "required": false,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? '' : HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
                 "answers": [],
                 "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -1147,13 +1239,19 @@
                 "rendering": "text"
               },
               "type": "obs",
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!/[a-zA-Z]/.test(artReadinessConfirmed)",
+                  "message": "Input must include at least one letter."
+                }
+              ]
             },
             {
               "label": "ART Readiness Confirmation Date",
               "id": "artReadiness",
               "required": true,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('436e5ca5-a5ad-42e3-9a73-4325b82693ca') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('436e5ca5-a5ad-42e3-9a73-4325b82693ca')) ? '' : HD.getObject('prevEnc').getValue('436e5ca5-a5ad-42e3-9a73-4325b82693ca')",
               "questionOptions": {
                 "answers": [],
                 "concept": "436e5ca5-a5ad-42e3-9a73-4325b82693ca",
@@ -1171,7 +1269,7 @@
               "label": "Initial ART regimen",
               "id": "intialArtRegimen",
               "required": true,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('23322fd6-3dbb-410e-8bee-6210dfcd5f71') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('23322fd6-3dbb-410e-8bee-6210dfcd5f71')) ? '' : HD.getObject('prevEnc').getValue('23322fd6-3dbb-410e-8bee-6210dfcd5f71')",
               "questionOptions": {
                 "concept": "23322fd6-3dbb-410e-8bee-6210dfcd5f71",
                 "rendering": "select",
@@ -1370,20 +1468,25 @@
               }
             },
             {
-              "label": "Cohort (Month,Year)",
+              "label": "Cohort (MM/YYYY)",
               "id": "cohort",
               "required": true,
               "questionOptions": {
-                "concept": "d0214403-61a6-46dd-b8b1-bd8e8dfacd38",
-                "rendering": "date"
+                "concept": "9683e455-6f3b-4ee9-b2b3-a4a8d77fcef8",
+                "rendering": "text"
               },
               "type": "obs",
               "validators": [
                 {
-                  "type": "date",
-                  "allowFutureDates": "false"
+                  "type": "js_expression",
+                  "failsWhenExpression": "cohort && !cohort.match(/^(0[1-9]|1[0-2])\\/\\d{4}$/)",
+                  "message": "The cohort should match the format 'MM/YYYY' (e.g., '02/2024')"
                 }
-              ]
+              ],
+              "alert": {
+                "alertWhenExpression": "cohort && !cohort.match(/^(0[1-9]|1[0-2])\\/\\d{4}$/)",
+                "message": "The cohort should match the format 'MM/YYYY' (e.g., '02/2024')"
+              }
             }
           ]
         }

@@ -1,5 +1,5 @@
 {
-  "name": "F. 8 - Follow up",
+  "name": "F. 8 - Follow Up",
   "version": "1.0.0",
   "retired": false,
   "published": true,
@@ -37,7 +37,7 @@
               "type": "obs",
               "required": true,
               "id": "dateScheduled",
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('494915d8-4cf3-4c24-9efa-371710992cb3') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('494915d8-4cf3-4c24-9efa-371710992cb3')) ? '' : HD.getObject('prevEnc').getValue('494915d8-4cf3-4c24-9efa-371710992cb3')",
               "questionOptions": {
                 "rendering": "date",
                 "concept": "494915d8-4cf3-4c24-9efa-371710992cb3"
@@ -99,7 +99,7 @@
               "label": "Weight (Kg)",
               "id": "weight",
               "required": false,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? '' : HD.getObject('prevEnc').getValue('5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
                 "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "rendering": "numeric",
@@ -114,7 +114,7 @@
               "label": "Height(cm)",
               "id": "height",
               "required": false,
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) ? '' : HD.getObject('prevEnc').getValue('5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')",
               "questionOptions": {
                 "answers": [],
                 "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -207,7 +207,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M' || age < 15 || clientRepresented === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "sex === 'M' || age < 15"
               },
               "validators": []
             },
@@ -305,7 +305,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M' || age < 15"
+                "hideWhenExpression": "sex === 'M' || age < 15 "
               },
               "validators": []
             },
@@ -371,7 +371,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex === 'M' || age < 15"
+                "hideWhenExpression": "sex === 'M' || age < 15 "
               },
               "validators": []
             },
@@ -416,13 +416,10 @@
               "type": "obs",
               "required": true,
               "id": "currentlyOnTBTreatment",
-              "historicalExpression": "HD.getObject('prevEnc')?.getValue('58ab89cd-6674-480b-95a0-5b761b0275cb') || ''",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('58ab89cd-6674-480b-95a0-5b761b0275cb')) ? '' : HD.getObject('prevEnc').getValue('58ab89cd-6674-480b-95a0-5b761b0275cb')",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "58ab89cd-6674-480b-95a0-5b761b0275cb",
-                "calculate": {
-                  "calculateExpression": "clientRepresented === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? '608f6df4-bc19-4afa-a1ff-58f407389221' : ''"
-                },
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -642,8 +639,12 @@
                   }
                 ],
                 "calculate": {
-                  "calculateExpression": "isEmpty(coughDuration) && isEmpty(feverIsh) && isEmpty(WeightLossGain) && isEmpty(nightSweats) && isEmpty(contacTbCase) ? '283858ee-c0b7-4691-ad6e-0785e9b737f4' : coughDuration === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && feverIsh === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && WeightLossGain === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && nightSweats === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? '33475272-c82b-4476-b6a2-1908d532af8f' : coughDuration !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || feverIsh !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || WeightLossGain !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || nightSweats !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? '4897c2f3-9d36-4d6c-bf5a-780db6b4ab12' : null "
+                  "calculateExpression": "isEmpty(coughDuration) && isEmpty(feverIsh) && isEmpty(WeightLossGain) && isEmpty(nightSweats) && isEmpty(contacTbCase) ? '283858ee-c0b7-4691-ad6e-0785e9b737f4' : coughDuration === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || feverIsh === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || WeightLossGain === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || nightSweats === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || pWeightGain === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || contacTbCase === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? '4897c2f3-9d36-4d6c-bf5a-780db6b4ab12' : '33475272-c82b-4476-b6a2-1908d532af8f'"
                 }
+              },
+              "alert": {
+                "alertWhenExpression": "(TBStatus === '4897c2f3-9d36-4d6c-bf5a-780db6b4ab12' && (coughDuration === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && feverIsh === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && WeightLossGain === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && nightSweats === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && contacTbCase === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')) || (TBStatus === '33475272-c82b-4476-b6a2-1908d532af8f' && (coughDuration === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || feverIsh === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || WeightLossGain === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || nightSweats === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || contacTbCase === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))",
+                "message": "If all the TB screening questions are no, the TB status should be no sign otherwise it should be presumptive TB"
               },
               "hide": {
                 "hideWhenExpression": "currentlyOnTBTreatment !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
@@ -677,7 +678,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "coughDuration !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && feverIsh !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && WeightLossGain !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && nightSweats !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": " coughDuration !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && feverIsh !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && WeightLossGain !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && nightSweats !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && pWeightGain !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && contacTbCase !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               }
             },
             {
@@ -702,7 +703,48 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "coughDuration !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && feverIsh !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && WeightLossGain !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && nightSweats !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "coughDuration !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || feverIsh !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || WeightLossGain !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || nightSweats === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || pWeightGain === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || contacTbCase === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' "
+              }
+            },
+            {
+              "label": "Reason for not eligible for TPT",
+              "type": "obs",
+              "required": false,
+              "id": "notEligibleForTPT",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "eda2ee9f-627d-472d-8f01-aa7cd246bf63",
+                "answers": [
+                  {
+                    "concept": "6ac9ad39-19aa-4a8a-a5bc-19f4048b32ab",
+                    "label": "Client has just completed TPT"
+                  },
+                  {
+                    "concept": "528b8898-5ef4-4f03-87f4-c14945fc9116",
+                    "label": "Client is currently on TB treatment"
+                  },
+                  {
+                    "concept": "ab54b8a4-95a5-48ed-b22b-cdb18a7a9b9b",
+                    "label": "Client is presumptive TB"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isClientEligibleForTPT !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Date Completed TPT",
+              "type": "obs",
+              "required": false,
+              "id": "dateClientCompletedTPT",
+              "datePickerFormat": "calendar",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "01c21238-6f58-4f8f-b0ef-b6554e427875"
+              },
+              "hide": {
+                "hideWhenExpression": "notEligibleForTPT !== '6ac9ad39-19aa-4a8a-a5bc-19f4048b32ab'"
               }
             },
             {
@@ -823,6 +865,47 @@
               },
               "hide": {
                 "hideWhenExpression": "isTptDispensed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Reason for not completed TPT",
+              "type": "obs",
+              "required": false,
+              "id": "notCompletedTPT",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "eda2ee9f-627d-472d-8f01-aa7cd246bf63",
+                "answers": [
+                  {
+                    "concept": "6ac9ad39-19aa-4a8a-a5bc-19f4048b32ab",
+                    "label": "Client has just completed TPT"
+                  },
+                  {
+                    "concept": "528b8898-5ef4-4f03-87f4-c14945fc9116",
+                    "label": "Client is currently on TB treatment"
+                  },
+                  {
+                    "concept": "ab54b8a4-95a5-48ed-b22b-cdb18a7a9b9b",
+                    "label": "Client is presumptive TB"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "clientCompletedTPT !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Date Started TPT",
+              "type": "obs",
+              "required": false,
+              "id": "dateStartedTPT",
+              "datePickerFormat": "calendar",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "31bb4874-196a-4f33-a6bf-b9e441d02a5d"
+              },
+              "hide": {
+                "hideWhenExpression": "clientCompletedTPT !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               }
             },
             {
@@ -1115,10 +1198,7 @@
                   "failsWhenExpression": "arrayContains(sideEfects, '2b663228-adaa-4cf0-ae77-5a2559e3f3a0') && arrayContainsAny(sideEfects, ['e31c3a3c-8156-4896-812c-be78fee13273', '512AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'f2cc0f34-6546-4af3-bd2d-3466047c0ce5', '121629AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'acecabeb-008a-4924-981f-fcc2807087f6', '50622f1f-9367-4a4e-a510-e969681d8df0', 'db99694b-a058-48a9-832c-64c28847a1a9', 'f20b15b2-4e14-11e4-8a57-0800271c1b75', '1dfb0948-4e15-11e4-8a57-0800271c1b75', '47be2dc7-acfc-43e8-8c27-4331856164db', '608f6df4-bc19-4afa-a1ff-58f407389221']) || arrayContains(sideEfects, '608f6df4-bc19-4afa-a1ff-58f407389221') && arrayContainsAny(sideEfects, ['e31c3a3c-8156-4896-812c-be78fee13273', '512AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'f2cc0f34-6546-4af3-bd2d-3466047c0ce5', '121629AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'acecabeb-008a-4924-981f-fcc2807087f6', '50622f1f-9367-4a4e-a510-e969681d8df0', 'db99694b-a058-48a9-832c-64c28847a1a9', 'f20b15b2-4e14-11e4-8a57-0800271c1b75', '1dfb0948-4e15-11e4-8a57-0800271c1b75', '47be2dc7-acfc-43e8-8c27-4331856164db', '2b663228-adaa-4cf0-ae77-5a2559e3f3a0'])",
                   "message": "You cannot select 'No side effects' or 'No information' along with other side effect options. Please deselect conflicting choices."
                 }
-              ],
-              "hide": {
-                "hideWhenExpression": "clientRepresented === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
+              ]
             },
             {
               "label": "Opportunistic Infections",
@@ -1186,10 +1266,7 @@
                   "failsWhenExpression": "arrayContains(oi, '26706674-eda4-49e8-a48b-3ccf0293bebf') && arrayContainsAny(oi, ['d9a0a7c1-66d8-4f71-aef6-e0aef4a5f2b1', '99e4878e-16ea-49d3-aa0e-585def370014', '0cf0ac7e-a631-474e-8fcd-f1dbba986589', 'd0a66c85-1bd1-4ae9-aed3-7fddf87680cf', 'f5efbdba-0950-421a-bf08-451fb6fe1752', '4ec32e51-cf72-4e93-a586-da62bd0ba703', '7b542ebb-dedd-4f3d-903e-a33e7118dcd8', '8ee9d84c-8ad4-483c-8951-d6ec976822fc', '9c7b5817-5b77-4601-a11f-bc4508998c56', '1eb028a7-d8eb-4fcc-a99c-e47f3dc00d5b', 'ef5d7595-87f6-4814-95e0-41533a517783'])",
                   "message": "You cannot select 'No Opportunistic Infections' along with other opportunistic infections options. Please deselect conflicting choices."
                 }
-              ],
-              "hide": {
-                "hideWhenExpression": "clientRepresented === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
+              ]
             },
             {
               "label": "Any new Opportunistic Infections",
@@ -1208,6 +1285,7 @@
               "label": "WHO Stage",
               "id": "whoStage",
               "required": true,
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('e38e6ce2-92d9-4382-927b-5555ff9fa850')) ? '' : HD.getObject('prevEnc').getValue('e38e6ce2-92d9-4382-927b-5555ff9fa850')",
               "questionOptions": {
                 "concept": "e38e6ce2-92d9-4382-927b-5555ff9fa850",
                 "rendering": "select",
@@ -1575,8 +1653,8 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "artRegimenNoOfDaysDispensedCTX === 'e9d42057-5171-4ca6-8024-2d80162a094a' ? artRegimenNoOfPillsDispensedCTX !== '39ec38d1-7b35-4f05-ab87-10983da0b484' : artRegimenNoOfDaysDispensedCTX === 'c595ca5a-0392-41b3-be35-57c0def42c07' ? '7b0642e1-7607-4b0f-806e-703b195345ea' : artRegimenNoOfDaysDispensedCTX === 'b86d480a-c6a9-421b-85ac-fa63fd5b31ae' ? artRegimenNoOfPillsDispensedCTX !== '3cd5ec7d-ac0e-46cc-8a46-ab7628da0a4f' : artRegimenNoOfDaysDispensedCTX === 'e01b566c-9660-49e2-8693-b9ca4cf84b1d' ? artRegimenNoOfPillsDispensedCTX !== 'af06426c-e63e-4f83-bdbc-a855c42bb0ca' : artRegimenNoOfDaysDispensedCTX === 'ea0a6423-365f-488b-a316-f1953db1e064' ? artRegimenNoOfPillsDispensedCTX !== 'c036d8cb-9416-43b3-b23f-91913ce424a3' : artRegimenNoOfDaysDispensedCTX === '8257517f-402f-4613-8dda-3d79a0c1451d' ? artRegimenNoOfPillsDispensedCTX !== 'faf5d5dc-1547-49f7-941d-6fdf2d1bfa50' : artRegimenNoOfDaysDispensedCTX === '5c7c6c22-672c-4847-8723-622e0e062f4d' ? artRegimenNoOfPillsDispensedCTX !== '91e0bcf5-8968-4004-9e14-bb466fccaf53' : artRegimenNoOfDaysDispensedCTX === 'bc8f2249-10f4-40a8-a960-952ea5f29b30' ? artRegimenNoOfPillsDispensedCTX !== '2e74862a-bb28-4e10-9a9a-b959a4a5da60' : ''",
-                  "message": "NUmber of PIlls chosen doesnt match the number of days."
+                  "failsWhenExpression": "artRegimenNoOfDaysDispensedCTX === 'e9d42057-5171-4ca6-8024-2d80162a094a' ? artRegimenNoOfPillsDispensedCTX !== '39ec38d1-7b35-4f05-ab87-10983da0b484' : artRegimenNoOfDaysDispensedCTX === 'c595ca5a-0392-41b3-be35-57c0def42c07' ? artRegimenNoOfPillsDispensedCTX !== '7b0642e1-7607-4b0f-806e-703b195345ea' : artRegimenNoOfDaysDispensedCTX === 'b86d480a-c6a9-421b-85ac-fa63fd5b31ae' ? artRegimenNoOfPillsDispensedCTX !== '3cd5ec7d-ac0e-46cc-8a46-ab7628da0a4f' : artRegimenNoOfDaysDispensedCTX === 'e01b566c-9660-49e2-8693-b9ca4cf84b1d' ? artRegimenNoOfPillsDispensedCTX !== 'af06426c-e63e-4f83-bdbc-a855c42bb0ca' : artRegimenNoOfDaysDispensedCTX === 'ea0a6423-365f-488b-a316-f1953db1e064' ? artRegimenNoOfPillsDispensedCTX !== 'c036d8cb-9416-43b3-b23f-91913ce424a3' : artRegimenNoOfDaysDispensedCTX === '8257517f-402f-4613-8dda-3d79a0c1451d' ? artRegimenNoOfPillsDispensedCTX !== 'faf5d5dc-1547-49f7-941d-6fdf2d1bfa50' : artRegimenNoOfDaysDispensedCTX === '5c7c6c22-672c-4847-8723-622e0e062f4d' ? artRegimenNoOfPillsDispensedCTX !== '91e0bcf5-8968-4004-9e14-bb466fccaf53' : artRegimenNoOfDaysDispensedCTX === 'bc8f2249-10f4-40a8-a960-952ea5f29b30' ? artRegimenNoOfPillsDispensedCTX !== '2e74862a-bb28-4e10-9a9a-b959a4a5da60' : ''",
+                  "message": "NUmber of Pills chosen doesnt match the number of days."
                 }
               ],
               "hide": {
@@ -1944,7 +2022,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "artRegimenNoOfDaysDispensedDapsone === 'e9d42057-5171-4ca6-8024-2d80162a094a' ? artRegimenNoOfPillsDispensedDapsone !== '39ec38d1-7b35-4f05-ab87-10983da0b484' : artRegimenNoOfDaysDispensedDapsone === 'c595ca5a-0392-41b3-be35-57c0def42c07' ? artRegimenNoOfPillsDispensedDapsone !== '7b0642e1-7607-4b0f-806e-703b195345ea' : artRegimenNoOfDaysDispensedDapsone === 'b86d480a-c6a9-421b-85ac-fa63fd5b31ae' ? artRegimenNoOfPillsDispensedDapsone !== '3cd5ec7d-ac0e-46cc-8a46-ab7628da0a4f' : artRegimenNoOfDaysDispensedDapsone === 'e01b566c-9660-49e2-8693-b9ca4cf84b1d' ? artRegimenNoOfPillsDispensedDapsone !== 'af06426c-e63e-4f83-bdbc-a855c42bb0ca' : artRegimenNoOfDaysDispensedDapsone === 'ea0a6423-365f-488b-a316-f1953db1e064' ? artRegimenNoOfPillsDispensedDapsone !== 'c036d8cb-9416-43b3-b23f-91913ce424a3' : artRegimenNoOfDaysDispensedDapsone === '8257517f-402f-4613-8dda-3d79a0c1451d' ? artRegimenNoOfPillsDispensedDapsone !== 'faf5d5dc-1547-49f7-941d-6fdf2d1bfa50' : artRegimenNoOfDaysDispensedDapsone === '5c7c6c22-672c-4847-8723-622e0e062f4d' ? artRegimenNoOfPillsDispensedDapsone !== '91e0bcf5-8968-4004-9e14-bb466fccaf53' : artRegimenNoOfDaysDispensedDapsone === 'bc8f2249-10f4-40a8-a960-952ea5f29b30' ? artRegimenNoOfPillsDispensedDapsone !== '2e74862a-bb28-4e10-9a9a-b959a4a5da60' : ''",
-                  "message": "NUmber of PIlls chosen doesnt match the number of days."
+                  "message": "NUmber of Pills chosen doesnt match the number of days."
                 }
               ],
               "hide": {
@@ -2306,7 +2384,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "artRegimenNoOfDaysDispensed === 'e9d42057-5171-4ca6-8024-2d80162a094a' ? artRegimenNoOfPillsDispensed !== '39ec38d1-7b35-4f05-ab87-10983da0b484' : artRegimenNoOfDaysDispensed === 'c595ca5a-0392-41b3-be35-57c0def42c07' ? artRegimenNoOfPillsDispensed !== '7b0642e1-7607-4b0f-806e-703b195345ea' : artRegimenNoOfDaysDispensed === 'b86d480a-c6a9-421b-85ac-fa63fd5b31ae' ? artRegimenNoOfPillsDispensed !== '3cd5ec7d-ac0e-46cc-8a46-ab7628da0a4f' : artRegimenNoOfDaysDispensed === 'e01b566c-9660-49e2-8693-b9ca4cf84b1d' ? artRegimenNoOfPillsDispensed !== 'af06426c-e63e-4f83-bdbc-a855c42bb0ca' : artRegimenNoOfDaysDispensed === 'ea0a6423-365f-488b-a316-f1953db1e064' ? artRegimenNoOfPillsDispensed !== 'c036d8cb-9416-43b3-b23f-91913ce424a3' : artRegimenNoOfDaysDispensed === '8257517f-402f-4613-8dda-3d79a0c1451d' ? artRegimenNoOfPillsDispensed !== 'faf5d5dc-1547-49f7-941d-6fdf2d1bfa50' : artRegimenNoOfDaysDispensed === '5c7c6c22-672c-4847-8723-622e0e062f4d' ? artRegimenNoOfPillsDispensed !== '91e0bcf5-8968-4004-9e14-bb466fccaf53' : artRegimenNoOfDaysDispensed === 'bc8f2249-10f4-40a8-a960-952ea5f29b30' ? artRegimenNoOfPillsDispensed !== '2e74862a-bb28-4e10-9a9a-b959a4a5da60' : ''",
-                  "message": "NUmber of PIlls chosen doesnt match the number of days."
+                  "message": "NUmber of Pills chosen doesnt match the number of days."
                 }
               ]
             },
@@ -3476,7 +3554,14 @@
                     "concept": "608f6df4-bc19-4afa-a1ff-58f407389221"
                   }
                 ]
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(labTests.includes('6cfc61ed-08ec-45cf-8317-325958dfdb9a') || labTests.includes('608f6df4-bc19-4afa-a1ff-58f407389221')) && labTests.length > 1",
+                  "message": "If Not Applicable or No information is chosen you can't choose other lab tests"
+                }
+              ]
             },
             {
               "label": "Other Investigations Done?",

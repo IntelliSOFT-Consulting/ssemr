@@ -1,5 +1,5 @@
 {
-	"name": "G. 9 - VL laboratory request form",
+	"name": "G. 9 - VL laboratory Request Form",
 	"published": true,
 	"retired": false,
 	"encounter": "VL laboratory request form",
@@ -47,7 +47,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "Time Sample Collected",
@@ -110,7 +115,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "Date of Initiation of Current Regimen",
@@ -123,7 +133,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "Is patient pregnant",
@@ -223,7 +238,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "VL Results",
@@ -279,11 +299,16 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "VL Results",
-							"required": true,
+							"required": false,
 							"type": "obs",
 							"id": "ValueRepeatVL",
 							"questionOptions": {
@@ -335,11 +360,16 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "VL Results",
-							"required": true,
+							"required": false,
 							"type": "obs",
 							"id": "valueTreatFailure",
 							"questionOptions": {
@@ -521,7 +551,12 @@
 								"conceptMappings": [],
 								"answers": []
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
+								}
+							]
 						},
 						{
 							"label": "Date Results Dispatched",
@@ -539,6 +574,10 @@
 									"type": "js_expression",
 									"failsWhenExpression": "new Date(dateResultDispatched) < new Date(dateSampleRecievedLab)",
 									"message": "Date Dispatched can't be before the date sample received"
+								},
+								{
+									"type": "date",
+									"isAllowedFutureDates": "false"
 								}
 							]
 						},
