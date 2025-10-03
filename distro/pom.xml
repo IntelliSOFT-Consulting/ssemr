@@ -255,12 +255,6 @@
       <version>${event.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>ssemrws-omod</artifactId>
-      <version>${ssemrws.version}</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 
   <build>
